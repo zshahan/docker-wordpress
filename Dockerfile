@@ -19,6 +19,7 @@ RUN set -ex; \
 	apk del .build-deps; \
 	curl -o jointswp.tar.gz -fSL "https://github.com/JeremyEnglert/JointsWP/archive/${JOINTSWP_VERSION}.tar.gz"; \
 	tar -xzf jointswp.tar.gz -C /usr/src/wordpress/wp-content/themes/; \
+	mv /usr/src/wordpress/wp-content/themes/JointsWP-${JOINTSWP_VERSION} /usr/src/wordpress/wp-content/themes/jointswp; \
 	rm jointswp.tar.gz; \
 	
 	
