@@ -1,4 +1,4 @@
-FROM wordpress:php7.1-fpm-alpine
+FROM wordpress:4.9.3-fpm-alpine
 
 RUN set -ex; \
 	\
