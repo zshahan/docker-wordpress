@@ -1,4 +1,4 @@
-FROM wordpress:4.9.3-fpm-alpine
+FROM wordpress:fpm-alpine
 
 RUN set -ex; \
 	\
@@ -15,5 +15,7 @@ RUN set -ex; \
 	)"; \
 	apk add --virtual .wordpress-phpexts-rundeps $runDeps; \
 	apk del .build-deps; \
-	rm -rf /usr/src/wordpress/wp-content/themes/{twentyfifteen,twentysixteen}; \
+	rm -rf /usr/src/wordpress/wp-content/themes/twentyfifteen; \
+	rm -rf /usr/src/wordpress/wp-content/themes/twentysixteen; \
 	rm -rf /usr/src/wordpress/wp-content/plugins/akismet; \
+	rm -rf /usr/src/wordpress/wp-content/plugins/hello.php; \
