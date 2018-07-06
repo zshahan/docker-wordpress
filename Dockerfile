@@ -1,5 +1,7 @@
 FROM wordpress:fpm-alpine
 
+RUN apk --no-cache --update add ca-certificates ssmtp
+
 RUN set -ex; \
 	\
 	apk add --no-cache --virtual .build-deps \
@@ -18,4 +20,9 @@ RUN set -ex; \
 	rm -rf /usr/src/wordpress/wp-content/themes/twentyfifteen; \
 	rm -rf /usr/src/wordpress/wp-content/themes/twentysixteen; \
 	rm -rf /usr/src/wordpress/wp-content/plugins/akismet; \
-	rm -rf /usr/src/wordpress/wp-content/plugins/hello.php; \
+	rm -rf /usr/src/wordpress/wp-content/plugins/hello.php;
+
+COPY ssmtp.sh /usr/local/bin/ssmtp.sh
+
+RUN sed -i '3i\source /usr/local/bin/ssmtp.sh' /usr/local/bin/docker-entrypoint.sh
+
