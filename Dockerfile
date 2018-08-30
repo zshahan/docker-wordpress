@@ -1,4 +1,4 @@
-FROM wordpress:fpm-alpine
+FROM wordpress:4.9.8-fpm-alpine
 
 RUN apk --no-cache --update add ca-certificates ssmtp
 
